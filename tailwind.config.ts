@@ -13,7 +13,7 @@ export default {
         textGreyLight:"#e7e9ea",
         borderGrey:"#2f3336",
         inoutGrey:"#202327",
-        iconBlue:"#id9bf0",
+        iconBlue:"#0b57d0",
         iconGreen:"#00ba7c",
         iconPink:"#f91880",
       },

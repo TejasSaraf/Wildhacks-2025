@@ -85,7 +85,7 @@ export function ExpenseForm({ onSubmit, className }: ExpenseFormProps) {
   };
 
   return (
-    <div className={cn("p-6 bg-card rounded-lg border shadow-sm", className)}>
+    <div className={cn("p-6 bg-card rounded-lg border-none shadow-xl", className)}>
       <h3 className="text-lg font-medium mb-4">Add New Expense</h3>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-4">
@@ -191,13 +191,15 @@ export function ExpenseForm({ onSubmit, className }: ExpenseFormProps) {
               </FormItem>
             )}
           />
-
-          <Button
+            <div className="flex items-center justify-center">
+            <Button
             type="submit"
-            className="w-full bg-budget-primary hover:bg-budget-primary/90"
+            className="w-30 px-2 py-1 bg-blue-300 hover:bg-budget-primary/90"
           >
             Add Expense
           </Button>
+            </div>
+
         </form>
       </Form>
     </div>

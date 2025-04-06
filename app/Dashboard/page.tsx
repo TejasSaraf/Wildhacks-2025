@@ -57,28 +57,42 @@ const Dashboard = () => {
   }, 0);
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background px-8 py-1 bg-gradient-to-r from-blue-150/75 to-blue-300/50">
       <Header />
 
-      <div className="container py-6">
-        <h1 className="text-3xl font-bold mb-6">Dashboard</h1>
+      <div className="py-6 leading-none tracking-tight">
+        <h1 className="text-3xl font-bold mb-2">Dashboard</h1>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <Card className="md:col-span-3">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-20">
+          <Card className="md:col-span-3 border-none shadow-none">
             <CardHeader>
               <CardTitle className="text-2xl">
                 Welcome to Budget Whisperer
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-muted-foreground">
+              <p className="text-muted-foreground text-xl text-[#827b7b]">
                 Track your expenses, analyze spending patterns, and get
                 AI-powered insights to improve your financial habits.
               </p>
             </CardContent>
           </Card>
 
-          <Card>
+          <div className="md:col-span-1 space-y-1">
+            <ExpenseList expenses={expenses} />
+          </div>
+
+          <div className="md:col-span-2 space-y-8">
+            <AiSuggestions
+              loading={isGeneratingInsights}
+              insights={insights}
+              onGenerateInsights={handleGenerateInsights}
+            />
+            <ExpenseForm onSubmit={handleAddExpense} />
+          </div>
+
+          {/* This Month Card */}
+          <Card className="border-none shadow-none">
             <CardHeader className="pb-2">
               <CardTitle>This Month</CardTitle>
             </CardHeader>
@@ -90,7 +104,8 @@ const Dashboard = () => {
             </CardContent>
           </Card>
 
-          <Card>
+          {/* Expenses Card */}
+          <Card className="border-none shadow-none">
             <CardHeader className="pb-2">
               <CardTitle>Expenses</CardTitle>
             </CardHeader>
@@ -102,7 +117,8 @@ const Dashboard = () => {
             </CardContent>
           </Card>
 
-          <Card>
+          {/* Insights Card */}
+          <Card className="border-none shadow-none">
             <CardHeader className="pb-2">
               <CardTitle>Insights</CardTitle>
             </CardHeader>
@@ -115,19 +131,6 @@ const Dashboard = () => {
               </p>
             </CardContent>
           </Card>
-
-          <div className="md:col-span-2 space-y-6">
-            <ExpenseList expenses={expenses} />
-          </div>
-
-          <div className="space-y-6">
-            <ExpenseForm onSubmit={handleAddExpense} />
-            <AiSuggestions
-              loading={isGeneratingInsights}
-              insights={insights}
-              onGenerateInsights={handleGenerateInsights}
-            />
-          </div>
         </div>
       </div>
     </div>
@@ -135,3 +138,4 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
+

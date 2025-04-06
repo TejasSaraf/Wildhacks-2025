@@ -56,8 +56,8 @@ export function AiSuggestions({
   );
 
   return (
-    <Card className={cn("border shadow-sm", className)}>
-      <CardHeader className="flex flex-row items-center justify-between pb-2 pt-6 space-y-0">
+    <Card className={cn("border-none shadow-2xl", className)}>
+      <CardHeader className="flex flex-row items-center justify-between pb-2 pt-12 space-y-0">
         <CardTitle className="flex items-center gap-2">
           <Sparkles className="h-5 w-5 text-budget-accent" />
           <span>AI-Powered Insights</span>

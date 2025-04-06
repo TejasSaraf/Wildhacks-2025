@@ -25,19 +25,19 @@ export function ExpenseList({ expenses, className }: ExpenseListProps) {
   );
 
   return (
-    <Card className={cn("border shadow-sm", className)}>
+    <Card className="border-none shadow-sm">
       <CardContent className="p-0">
-        <h3 className="text-lg font-medium p-4 border-b">Recent Expenses</h3>
+        <h3 className="text-xl font-bold p-2 ">Recent Expenses</h3>
 
         {expenses.length === 0 ? (
           <div className="p-6 text-center text-muted-foreground">
             No expenses yet. Add your first expense to get started!
           </div>
         ) : (
-          <ScrollArea className="h-[500px]">
+          <ScrollArea className="h-[760px]">
             {sortedDates.map((dateString) => (
-              <div key={dateString} className="border-b last:border-b-0">
-                <div className="bg-muted/30 px-4 py-2 sticky top-0">
+              <div key={dateString} className="">
+                <div className="bg-muted/30 px-4 py-2 top-0">
                   <span className="font-medium">
                     {format(new Date(dateString), "EEEE, MMMM d, yyyy")}
                   </span>
