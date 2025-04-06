@@ -3,24 +3,22 @@
 import { signIn } from "next-auth/react";
 import React from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 
 export default function SignIn() {
-  const router = useRouter();
-
   const handleGoogleSignIn = async () => {
-    // Use the next-auth/react signIn function directly
-    await signIn("google", { callbackUrl: "/" });
+    await signIn("google", { callbackUrl: "/Dashboard" });
   };
 
   const handleGithubSignIn = async () => {
-    await signIn("github", { callbackUrl: "/" });
+    await signIn("github", { callbackUrl: "/Dashboard" });
   };
 
   return (
     <div className="flex h-screen w-full">
       <div className="leftPanel bg-gradient-to-r from-blue-200/75 to-blue-500/50 w-1/2 flex items-center justify-center">
-        <h1 className="font-display text-3xl text-black font-bold">FlowCastly</h1>
+        <h1 className="font-display text-3xl text-black font-bold">
+          FlowCastly
+        </h1>
       </div>
       <div className="rightPanel bg-white w-1/2 flex items-center justify-center gap-5 flex-col">
         <div className="text-3xl font-bold font-display p-z">Welcome Back</div>
@@ -28,7 +26,7 @@ export default function SignIn() {
           {" "}
           SignIn to continue your growth journey
         </p>
-        
+
         <button
           onClick={handleGoogleSignIn}
           className="flex bg-white-500 text-black text-xl gap-2 border border-rgb(229, 229, 229) px-6 py-1 rounded-lg"
