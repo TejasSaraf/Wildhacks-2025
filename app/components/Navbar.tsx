@@ -5,44 +5,52 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { useSession } from "next-auth/react";
 
-
 function Navbar() {
+  const router = useRouter();
+  const { data: session } = useSession();
 
-    const router = useRouter();
-    const { data: session, status } = useSession();
-  
-    const handleSignIn = () => {
-      router.push("/SignIn");
-    };
+  const handleSignIn = () => {
+    router.push("/SignIn");
+  };
 
   return (
-    <nav className="flex justify-between p-6 border-b border-gray-200 items-center bg-gradient-to-r from-blue-100/75 to-blue-400/50">
-      <div className="flex items-center text-2xl font-bold text-[iconBlue]">CashFlow</div>
-      <div className="flex items-center gap-2">
-        <div>Features</div>
-        <div>How it works</div>
-        <div>Testimonials</div>
-        <div>Pricing</div>
+    <nav className="bg-[#264f61] backdrop-blur-sm sticky top-0 z-50 border-b border-gray-800 shadow-sm">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between h-16 items-center">
 
-        <div className="flex items-center gap-4">
-        {session?.user?.image ? (
-          <Image
-            src={session.user.image}
-            width={40}
-            height={40}
-            alt="Profile"
-            className="rounded-full"
-          />
-        ) : (
-          <button
-            type="button"
-            className="font-sans text-white text-xl border-[1px] border-borderGrey rounded-lg px-4 py-1"
-            onClick={handleSignIn}
-          >
-            Signin
-          </button>
-        )}
-      </div>
+          <div className="flex-shrink-0 flex items-center">
+            <span className="text-2xl font-bold bg-gradient-to-r from-cyan-300 to-teal-400 bg-clip-text text-transparent">
+              Finalyze
+            </span>
+          </div>
+
+          <div className="flex items-center space-x-3">
+            {session?.user?.image ? (
+              <Image
+                src={session.user.image}
+                width={36}
+                height={36}
+                alt="Profile"
+                className="rounded-full border border-teal-400 hover:scale-105 transition-transform"
+              />
+            ) : (
+              <button
+                className="bg-transparent border border-teal-400 text-teal-300 hover:bg-teal-500/10 text-sm px-4 py-2 rounded-lg hidden sm:inline-flex"
+                onClick={handleSignIn}
+              >
+                Log in
+              </button>
+            )}
+
+            <div className="md:hidden flex items-center">
+              <button className="text-gray-300 hover:text-cyan-400 focus:outline-none">
+                <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </nav>
   );

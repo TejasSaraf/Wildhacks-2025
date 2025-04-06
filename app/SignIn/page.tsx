@@ -17,7 +17,7 @@ export default function SignIn() {
     <div className="flex h-screen w-full">
       <div className="leftPanel bg-gradient-to-r from-blue-200/75 to-blue-500/50 w-1/2 flex items-center justify-center">
         <h1 className="font-display text-3xl text-black font-bold">
-          FlowCastly
+          Finalyze
         </h1>
       </div>
       <div className="rightPanel bg-white w-1/2 flex items-center justify-center gap-5 flex-col">
